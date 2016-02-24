@@ -9,11 +9,12 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.pop.sean.androidtown.MainActivity"
-    tools:showIn="@layout/activity_main">
+    tools:context=".view.activity.EditorsChoiceActivity"
+    tools:showIn="@layout/activity_editors_choice">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </android.support.v4.view.ViewPager>
 </RelativeLayout>
