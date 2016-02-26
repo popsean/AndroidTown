@@ -10,12 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.pop.sean.androidtown.ATownApplication;
-import com.pop.sean.androidtown.interfaces.BaseFragmentInterface;
+
+import butterknife.ButterKnife;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BaseFragment extends Fragment implements BaseFragmentInterface{
+public abstract class BaseFragment extends Fragment{
 
     protected LayoutInflater mInflater;
     protected Activity mActivity;
@@ -37,21 +38,16 @@ public class BaseFragment extends Fragment implements BaseFragmentInterface{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         this.mInflater = inflater;
-        View view = super.onCreateView(inflater, container, savedInstanceState);
+        View view = inflater.inflate(getLayoutId(), container, false);
+        ButterKnife.bind(this, view);
+        initView();
         return view;
     }
 
     protected int getLayoutId() {
         return 0;
     }
+    protected abstract void initView();
+    protected abstract void initData();
 
-    @Override
-    public void initViews(View view) {
-
-    }
-
-    @Override
-    public void initData() {
-
-    }
 }

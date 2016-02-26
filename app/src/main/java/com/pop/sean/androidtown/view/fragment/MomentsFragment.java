@@ -4,13 +4,11 @@ package com.pop.sean.androidtown.view.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.pop.sean.androidtown.R;
 import com.pop.sean.androidtown.view.MomentsView;
+import com.pop.sean.androidtown.view.activity.BaseActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,6 +17,8 @@ public class MomentsFragment extends BaseFragment implements MomentsView {
 
 //    MomentsPresenter momentsPresenter;
     private String mTitle = "empty";
+
+    TextView tv;
 
     public MomentsFragment() {
         // Required empty public constructor
@@ -45,12 +45,20 @@ public class MomentsFragment extends BaseFragment implements MomentsView {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        super.onCreateView(inflater, container, savedInstanceState);
-        View view = mInflater.inflate(R.layout.fragment_moments_layout, container, false);
-        ((TextView) view.findViewById(R.id.tv)).setText(mTitle);
-        return view;
+    protected int getLayoutId() {
+        return R.layout.fragment_moments_layout;
+    }
+
+    @Override
+    protected void initView() {
+        ((BaseActivity)getActivity()).setToolBarTitle(mTitle);
+//        ((TextView)getActivity().findViewById(R.id.tv)).setText(mTitle);
+    }
+
+
+    @Override
+    protected void initData() {
+
     }
 
     @Override

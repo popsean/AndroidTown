@@ -1,19 +1,25 @@
-package com.pop.sean.androidtown.view.activity;
+package com.pop.sean.androidtown.view.fragment;
+
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.view.Menu;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.pop.sean.androidtown.R;
+import com.pop.sean.androidtown.view.activity.MainActivity;
 import com.pop.sean.androidtown.view.adapter.EditorsChoicePagerAdapter;
 
 import butterknife.Bind;
 
-public class EditorsChoiceActivity extends BaseDrawerActivity {
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class EditorsChoiceFragment extends BaseFragment {
 
     @Bind(R.id.view_pager)
     ViewPager viewPager;
@@ -22,24 +28,42 @@ public class EditorsChoiceActivity extends BaseDrawerActivity {
 
     private LinearLayout mTabsLinearLayout;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_editors_choice);
-        initViews();
+    public EditorsChoiceFragment() {
+        // Required empty public constructor
     }
 
-    private void initViews() {
+    public static EditorsChoiceFragment newInstance(String title){
+        EditorsChoiceFragment f = new EditorsChoiceFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("title", title);
+        f.setArguments(bundle);
+        return f;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        MainActivity activity = (MainActivity) getActivity();
+        activity.setToolBarTitle(getArguments().getString("title"));
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.fragment_editors_choice_layout;
+    }
+
+    @Override
+    protected void initView() {
         // Initialize the ViewPager and set an adapter
-        viewPager.setAdapter(new EditorsChoicePagerAdapter(getSupportFragmentManager()));
+        viewPager.setAdapter(new EditorsChoicePagerAdapter(getActivity().getSupportFragmentManager()));
 
         // Bind the tabs to the ViewPager
         tabs.setViewPager(viewPager);
         mTabsLinearLayout = (LinearLayout) tabs.getChildAt(0);
-        for(int i=0; i < mTabsLinearLayout.getChildCount(); i++){
+        for (int i = 0; i < mTabsLinearLayout.getChildCount(); i++) {
             TextView tv = (TextView) mTabsLinearLayout.getChildAt(i);
 
-            if(i == 0){
+            if (i == 0) {
                 tv.setTextColor(Color.BLACK);
             } else {
                 tv.setTextColor(Color.GRAY);
@@ -53,9 +77,9 @@ public class EditorsChoiceActivity extends BaseDrawerActivity {
 
             @Override
             public void onPageSelected(int position) {
-                for(int i=0; i < mTabsLinearLayout.getChildCount(); i++){
+                for (int i = 0; i < mTabsLinearLayout.getChildCount(); i++) {
                     TextView tv = (TextView) mTabsLinearLayout.getChildAt(i);
-                    if(i == position){
+                    if (i == position) {
                         tv.setTextColor(Color.BLACK);
                     } else {
                         tv.setTextColor(Color.GRAY);
@@ -69,12 +93,12 @@ public class EditorsChoiceActivity extends BaseDrawerActivity {
             }
         });
         viewPager.setCurrentItem(0);
-
     }
 
+
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        return false;
+    protected void initData() {
+
     }
 
 }
