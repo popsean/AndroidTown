@@ -36,4 +36,16 @@ public interface Presenter {
    * (Activity or Fragment) onDestroy() method.
    */
   void destroy();
+
+
+  void showViewLoading();
+
+  void hideViewLoading();
+
+  void showViewRetry();
+
+  void hideViewRetry();
+
+  void showErrorMessage();
+
 }

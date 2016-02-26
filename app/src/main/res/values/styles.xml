@@ -17,4 +17,7 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <attr name="pstsTabSelectedTextColor" format="color" />
+    <attr name="pstsTabUnselectedTextColor" format="color" />
+
 </resources>
