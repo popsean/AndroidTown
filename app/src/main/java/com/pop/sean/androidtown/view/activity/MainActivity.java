@@ -9,6 +9,7 @@ import android.view.View;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.pop.sean.androidtown.R;
+import com.pop.sean.androidtown.statics.Constant;
 import com.pop.sean.androidtown.view.fragment.EditorsChoiceFragment;
 import com.pop.sean.androidtown.view.fragment.MomentsFragment;
 
@@ -22,6 +23,7 @@ public class MainActivity extends BaseActivity {
         if (savedInstanceState == null) {
             Fragment f = EditorsChoiceFragment.newInstance("EDITORS' CHOICE");
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, f).commit();
+            setToolBarTitle(Constant.RECOMMEND_PAGE);
         }
 
         initViews();
@@ -36,35 +38,42 @@ public class MainActivity extends BaseActivity {
 
                         switch (position) {
                             case 1:
-                                Fragment f1 = EditorsChoiceFragment.newInstance("EDITORS' CHOICE");
+                                Fragment f1 = EditorsChoiceFragment.newInstance(Constant.RECOMMEND_PAGE);
                                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, f1).commit();
+                                setToolBarTitle(Constant.RECOMMEND_PAGE);
                                 Log.d("TOWN", "1");
                                 break;
                             case 2:
-                                Fragment f2 = MomentsFragment.newInstance("FOLLOW");
+                                Fragment f2 = MomentsFragment.newInstance(Constant.RELATIONSHIP_PAGE);
                                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, f2).commit();
+                                setToolBarTitle(Constant.RELATIONSHIP_PAGE);
                                 Log.d("TOWN", "2");
                                 break;
                             case 3:
                                 Log.d("TOWN", "3");
-                                Fragment f3 = MomentsFragment.newInstance("FAVORITE");
+                                Fragment f3 = MomentsFragment.newInstance(Constant.FAVORITE_PAGE);
                                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, f3).commit();
+                                setToolBarTitle(Constant.FAVORITE_PAGE);
                                 break;
                             case 4:
-                                Fragment f4 = MomentsFragment.newInstance("FEED");
+                                Fragment f4 = MomentsFragment.newInstance(Constant.FEED_PAGE);
                                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, f4).commit();
+                                setToolBarTitle(Constant.FEED_PAGE);
                                 break;
                             case 5:
-                                Fragment f5 = MomentsFragment.newInstance("CITY");
+                                Fragment f5 = MomentsFragment.newInstance(Constant.CITY_PAGE);
                                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, f5).commit();
+                                setToolBarTitle(Constant.CITY_PAGE);
                                 break;
                             case 6:
-                                Fragment f6 = MomentsFragment.newInstance("MESSAGE");
+                                Fragment f6 = MomentsFragment.newInstance(Constant.MESSAGE_PAGE);
                                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, f6).commit();
+                                setToolBarTitle(Constant.MESSAGE_PAGE);
                                 break;
                             case 7:
-                                Fragment f7 = MomentsFragment.newInstance("SETTING");
+                                Fragment f7 = MomentsFragment.newInstance(Constant.SETTING_PAGE);
                                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, f7).commit();
+                                setToolBarTitle(Constant.SETTING_PAGE);
                                 break;
                         }
                         if (getDrawer().isDrawerOpen()) {

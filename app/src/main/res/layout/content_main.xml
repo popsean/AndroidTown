@@ -13,24 +13,4 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/toolbar" />
-
-    <!--<com.astuetz.PagerSlidingTabStrip-->
-    <!--android:id="@+id/tabs"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="48dip"-->
-    <!--android:textSize="10sp"-->
-    <!--app:pstsDividerColor="@android:color/transparent"-->
-    <!--app:pstsIndicatorColor="@android:color/black"-->
-    <!--app:pstsIndicatorHeight="2dp"-->
-    <!--app:pstsShouldExpand="true"-->
-    <!--app:pstsTabBackground="@android:color/transparent"-->
-    <!--app:pstsUnderlineColor="@android:color/darker_gray"-->
-    <!--app:pstsUnderlineHeight="1dp"-->
-    <!--/>-->
-
-    <!--<android.support.v4.view.ViewPager-->
-    <!--android:id="@+id/view_pager"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--/>-->
 </RelativeLayout>

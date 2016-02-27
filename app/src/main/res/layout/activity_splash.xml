@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
-        android:background="@mipmap/start_up"
+        android:background="@mipmap/town_start"
         android:scaleType="fitXY" />
 
 </RelativeLayout>

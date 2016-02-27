@@ -5,6 +5,7 @@ import android.support.annotation.LayoutRes;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
@@ -25,6 +26,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Bind(R.id.toolbar)
     protected Toolbar toolbar;
+    @Bind(R.id.toolbar_title)
+    protected TextView tvTitle;
     protected Drawer drawer;
     protected AccountHeader headerResult = null;
     protected IProfile profile;
@@ -43,6 +46,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected void setUpToolBar() {
         if (toolbar != null) {
+            toolbar.setTitle("");
             setSupportActionBar(toolbar);
             setToolBarTitle("town");
         }
@@ -86,7 +90,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     public void setToolBarTitle(String title) {
-        getSupportActionBar().setTitle(title);
+        tvTitle.setText(title);
     }
 
     private void buildHeader(boolean compact, Bundle savedInstanceState) {

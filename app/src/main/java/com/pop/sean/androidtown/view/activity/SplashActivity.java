@@ -25,7 +25,7 @@ public class SplashActivity extends Activity {
     }
 
     private void starting() {
-        final ScaleAnimation scaleAnim = new ScaleAnimation(1.0f, 1.2f, 1.0f, 1.2f,
+        final ScaleAnimation scaleAnim = new ScaleAnimation(1.0f, 1.0f, 1.0f, 1.0f,
                 Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
                 0.5f);
         scaleAnim.setFillAfter(true);

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -15,6 +16,8 @@ import com.pop.sean.androidtown.view.activity.MainActivity;
 import com.pop.sean.androidtown.view.adapter.EditorsChoicePagerAdapter;
 
 import butterknife.Bind;
+import in.srain.cube.views.ptr.PtrFrameLayout;
+import in.srain.cube.views.ptr.PtrHandler;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,13 +29,15 @@ public class EditorsChoiceFragment extends BaseFragment {
     @Bind(R.id.tabs)
     PagerSlidingTabStrip tabs;
 
+
     private LinearLayout mTabsLinearLayout;
+    private EditorsChoicePagerAdapter mAdapter;
 
     public EditorsChoiceFragment() {
         // Required empty public constructor
     }
 
-    public static EditorsChoiceFragment newInstance(String title){
+    public static EditorsChoiceFragment newInstance(String title) {
         EditorsChoiceFragment f = new EditorsChoiceFragment();
         Bundle bundle = new Bundle();
         bundle.putString("title", title);
@@ -44,7 +49,7 @@ public class EditorsChoiceFragment extends BaseFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         MainActivity activity = (MainActivity) getActivity();
-        activity.setToolBarTitle(getArguments().getString("title"));
+//        activity.setToolBarTitle(getArguments().getString("title"));
     }
 
     @Override
@@ -55,7 +60,8 @@ public class EditorsChoiceFragment extends BaseFragment {
     @Override
     protected void initView() {
         // Initialize the ViewPager and set an adapter
-        viewPager.setAdapter(new EditorsChoicePagerAdapter(getActivity().getSupportFragmentManager()));
+        mAdapter = new EditorsChoicePagerAdapter(getChildFragmentManager());
+        viewPager.setAdapter(mAdapter);
 
         // Bind the tabs to the ViewPager
         tabs.setViewPager(viewPager);
@@ -92,9 +98,14 @@ public class EditorsChoiceFragment extends BaseFragment {
 
             }
         });
-        viewPager.setCurrentItem(0);
+        switchTo(0);
+
     }
 
+    private void switchTo(int position) {
+        mAdapter.switchTO(position);
+        viewPager.setCurrentItem(position);
+    }
 
     @Override
     protected void initData() {
