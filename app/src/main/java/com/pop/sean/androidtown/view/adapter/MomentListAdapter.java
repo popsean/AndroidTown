@@ -1,5 +1,6 @@
 package com.pop.sean.androidtown.view.adapter;
 
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +9,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.pop.sean.androidtown.ATownApplication;
 import com.pop.sean.androidtown.R;
+import com.pop.sean.androidtown.view.activity.MainActivity;
+import com.pop.sean.androidtown.view.fragment.MomentViewPagerFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,13 +20,13 @@ import java.util.List;
 /**
  * Created by stanzhao on 2/27/16.
  */
-public class MomentsAdapter extends BaseAdapter {
+public class MomentListAdapter extends BaseAdapter {
 
     private List<String> dataList = new ArrayList<>();
     private ViewHolder holder;
     private Context context;
 
-    public MomentsAdapter(Context context, List<String> dataList) {
+    public MomentListAdapter(Context context, List<String> dataList) {
         this.context = context;
         this.dataList = dataList;
     }
@@ -55,6 +59,16 @@ public class MomentsAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         holder.tv.setText(dataList.get(position));
+        holder.iv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MomentViewPagerFragment f = MomentViewPagerFragment.newInstance();
+                android.support.v4.app.FragmentTransaction ft = MainActivity.getInstance().getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.fragment_container, f, "fragment_moment_detail");
+                ft.addToBackStack("fragment_moment_detail");
+                ft.commit();
+            }
+        });
         return convertView;
 
     }

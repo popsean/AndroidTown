@@ -4,39 +4,29 @@ package com.pop.sean.androidtown.view.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.widget.ListView;
-import android.widget.TextView;
 
-import com.pop.sean.androidtown.R;
 import com.pop.sean.androidtown.view.MomentsView;
-import com.pop.sean.androidtown.view.adapter.MomentsAdapter;
+import com.pop.sean.androidtown.view.adapter.MomentListAdapter;
 
 import java.util.ArrayList;
-
-import butterknife.Bind;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MomentsFragment extends BaseListFragment implements MomentsView {
+public class MomentsListFragment extends BaseListFragment implements MomentsView {
 
 //    MomentsPresenter momentsPresenter;
 
     private String mTitle = "empty";
-    private MomentsAdapter adapter;
+    private MomentListAdapter adapter;
 
-    public MomentsFragment() {
+    public MomentsListFragment() {
         // Required empty public constructor
     }
 
-//    public MomentsFragment(MomentsPresenter mp) {
-//        // Required empty public constructor
-//        this.momentsPresenter = mp;
-//        mp.setView(this);
-//    }
 
-    public static final MomentsFragment newInstance(String title) {
-        MomentsFragment momentsFragment = new MomentsFragment(/*new MomentsPresenter()*/);
+    public static final MomentsListFragment newInstance(String title) {
+        MomentsListFragment momentsFragment = new MomentsListFragment(/*new MomentsPresenter()*/);
         Bundle bundle = new Bundle();
         bundle.putString("title", title);
         momentsFragment.setArguments(bundle);
@@ -64,7 +54,7 @@ public class MomentsFragment extends BaseListFragment implements MomentsView {
         list.add("13333");
         list.add("13333");
         list.add("13333");
-        adapter = new MomentsAdapter(getContext(), list);
+        adapter = new MomentListAdapter(getContext(), list);
         mListView.setAdapter(adapter);
     }
 

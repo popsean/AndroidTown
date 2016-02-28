@@ -7,9 +7,15 @@ import android.app.Application;
  */
 public class ATownApplication extends Application {
 
+    private static ATownApplication instace;
+    public static ATownApplication getInstance(){
+        return instace;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
 //        Fresco.initialize(getApplicationContext());
+        instace = this;
     }
 }

@@ -3,11 +3,9 @@ package com.pop.sean.androidtown.view.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.widget.ListView;
 
-import com.pop.sean.androidtown.view.fragment.BaseFragment;
 import com.pop.sean.androidtown.view.fragment.BaseListFragment;
-import com.pop.sean.androidtown.view.fragment.MomentsFragment;
+import com.pop.sean.androidtown.view.fragment.MomentsListFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,10 +20,10 @@ public class EditorsChoicePagerAdapter extends FragmentPagerAdapter {
 
     public EditorsChoicePagerAdapter(FragmentManager fm) {
         super(fm);
-        fragments = new ArrayList<BaseListFragment>();
-        fragments.add(new MomentsFragment().newInstance("MOMENTS"));
-        fragments.add(new MomentsFragment().newInstance("VENUE"));
-        fragments.add(new MomentsFragment().newInstance("PEOPLE"));
+        fragments = new ArrayList<>();
+        fragments.add(new MomentsListFragment().newInstance("MOMENTS"));
+        fragments.add(new MomentsListFragment().newInstance("VENUE"));
+        fragments.add(new MomentsListFragment().newInstance("PEOPLE"));
     }
     private BaseListFragment mCurrentFragment;
 
@@ -59,5 +57,10 @@ public class EditorsChoicePagerAdapter extends FragmentPagerAdapter {
                 mCurrentFragment = fragment;
             }
         }
+    }
+
+    @Override
+    public int getItemPosition(Object object) {
+        return POSITION_NONE;
     }
 }
