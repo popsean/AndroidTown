@@ -1,4 +1,4 @@
-package com.pop.sean.androidtown.view;
+package com.pop.sean.androidtown.testcode;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -8,12 +8,11 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.widget.ImageView;
 
 import com.pop.sean.androidtown.util.ScreenUtils;
 
-public class AnimatView extends ImageView implements SensorEventListener {
+public class AnimatView2 extends ImageView implements SensorEventListener {
 
     private static final int DELTA = 10;
 
@@ -22,7 +21,7 @@ public class AnimatView extends ImageView implements SensorEventListener {
     private long lastTime = 0;
     private long nowTime = 0;
 
-    AnimatView animatedView = null;
+    AnimatView2 animatedView = null;
     private static int currentX = 0;
 
     private int mOldSensorX = 99999;
@@ -43,12 +42,12 @@ public class AnimatView extends ImageView implements SensorEventListener {
     private long mSensorTimeStamp;
     private long mCpuTimeStamp;
 
-    public AnimatView(Context context) {
+    public AnimatView2(Context context) {
         super(context);
         init();
     }
 
-    public AnimatView(Context context, AttributeSet attrs) {
+    public AnimatView2(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }

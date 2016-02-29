@@ -1,4 +1,4 @@
-package com.pop.sean.androidtown.sensor;
+package com.pop.sean.androidtown.testcode;
 
 
 /**

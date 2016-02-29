@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    >
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="获取传感器"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/v"
+        android:text="v"
+        android:textColor="@android:color/black"
+        android:textSize="30px"
+        ></TextView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/vx"
+        android:text="vx"
+        android:textColor="@android:color/black"
+        android:textSize="50px"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/vy"
+        android:text="vy"
+        android:textColor="@android:color/black"
+        android:textSize="50px"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/vz"
+        android:text="vz"
+        android:textColor="@android:color/black"
+        android:textSize="50px"
+        />
+
+</LinearLayout>

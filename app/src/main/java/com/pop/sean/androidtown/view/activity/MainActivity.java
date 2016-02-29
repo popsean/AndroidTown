@@ -9,8 +9,11 @@ import android.view.View;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.pop.sean.androidtown.R;
+import com.pop.sean.androidtown.testcode.CompassFragment;
 import com.pop.sean.androidtown.sensor.GravitySensorFragment;
-import com.pop.sean.androidtown.sensor.TestFragment;
+import com.pop.sean.androidtown.testcode.GravitySensorFragment2;
+import com.pop.sean.androidtown.testcode.SensorTest3;
+import com.pop.sean.androidtown.testcode.TestFragment;
 import com.pop.sean.androidtown.statics.Constant;
 import com.pop.sean.androidtown.view.fragment.EditorsChoiceFragment;
 import com.pop.sean.androidtown.view.fragment.MomentsListFragment;
@@ -59,19 +62,19 @@ public class MainActivity extends BaseActivity {
                                 break;
                             case 3:
                                 Log.d("TOWN", "3");
-                                Fragment f3 = MomentsListFragment.newInstance(Constant.FAVORITE_PAGE);
+                                Fragment f3 = CompassFragment.newInstance();
                                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, f3).commit();
-                                setToolBarTitle(Constant.FAVORITE_PAGE);
+                                setToolBarTitle("Compass");
                                 break;
                             case 4:
-                                Fragment f4 = MomentsListFragment.newInstance(Constant.FEED_PAGE);
+                                Fragment f4 = SensorTest3.newInstance();
                                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, f4).commit();
-                                setToolBarTitle(Constant.FEED_PAGE);
+                                setToolBarTitle("O sensor");
                                 break;
                             case 5:
-                                Fragment f5 = MomentsListFragment.newInstance(Constant.CITY_PAGE);
+                                Fragment f5 = GravitySensorFragment2.newInstance();
                                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, f5).commit();
-                                setToolBarTitle(Constant.CITY_PAGE);
+                                setToolBarTitle("Gsensor 2");
                                 break;
                             case 6:
                                 Fragment f6 = TestFragment.newInstance();

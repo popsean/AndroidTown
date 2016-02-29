@@ -3,14 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
-    <com.pop.sean.androidtown.view.FloatImageView
-        android:id="@+id/av"
+    <ImageView
+        android:id="@+id/compass_imageView"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:adjustViewBounds="true"
-        android:scaleType="fitXY"
-        android:src="@mipmap/test_item1"
-        />
+        android:layout_height="wrap_content"
+        android:src="@mipmap/compass" />
 
 </LinearLayout>
