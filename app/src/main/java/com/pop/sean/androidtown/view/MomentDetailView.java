@@ -2,18 +2,10 @@ package com.pop.sean.androidtown.view;
 
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.content.res.TypedArray;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.pop.sean.androidtown.R;
@@ -28,8 +20,8 @@ public class MomentDetailView extends FrameLayout {
 
     @Bind(R.id.tv)
     TextView tv;
-    @Bind(R.id.iv)
-    ImageView iv;
+    @Bind(R.id.fiv)
+    FloatImageView fIv;
 
     public MomentDetailView(Context context) {
         super(context);
@@ -52,6 +44,17 @@ public class MomentDetailView extends FrameLayout {
         init();
     }
 
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        fIv.registerSensor();
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        fIv.unRegisterSensor();
+    }
 
     private void init(){
         LayoutInflater.from(getContext()).inflate(R.layout.fragment_moment_detail_layout, this, true);
@@ -61,7 +64,7 @@ public class MomentDetailView extends FrameLayout {
 
     public void setRes(String s, int imageId){
         tv.setText(s);
-        iv.setBackgroundResource(imageId);
+        fIv.setImageResource(imageId);
     }
 
 }

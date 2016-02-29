@@ -1,17 +1,14 @@
-package com.pop.sean.androidtown.view.fragment;
+package com.pop.sean.androidtown.testcode;
 
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.pop.sean.androidtown.R;
+import com.pop.sean.androidtown.view.fragment.BaseFragment;
 
 import butterknife.Bind;
 

@@ -8,11 +8,11 @@
         android:layout_height="match_parent"
         >
 
-        <ImageView
-            android:id="@+id/iv"
-            android:layout_width="match_parent"
+        <com.pop.sean.androidtown.view.FloatImageView
+            android:id="@+id/fiv"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="@mipmap/moment_detail1"
+            android:adjustViewBounds="true"
             android:scaleType="fitXY" />
 
         <TextView
@@ -24,8 +24,8 @@
             android:textColor="@android:color/white"
             android:text="哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈"
             android:layout_gravity="bottom|left"
-            android:paddingLeft="10dp"
-            android:layout_marginBottom="100dp"
+            android:paddingLeft="8dp"
+            android:layout_marginBottom="80dp"
             />
 
         </FrameLayout>

@@ -35,7 +35,7 @@ public class FloatImageView extends ImageView implements SensorEventListener {
         sensorManager = (SensorManager) getContext().getSystemService(Context.SENSOR_SERVICE);
         sensor = sensorManager
                 .getDefaultSensor(Sensor.TYPE_ORIENTATION);
-        getDrawable().setAlpha(0);
+//        getDrawable().setAlpha(0);
     }
 
     @Override
@@ -69,7 +69,7 @@ public class FloatImageView extends ImageView implements SensorEventListener {
         if (event.sensor == null || event.sensor.getType() != Sensor.TYPE_ORIENTATION) {
             return;
         }
-        getDrawable().setAlpha(255);
+//        getDrawable().setAlpha(255);
         float degree = event.values[0];
         if (degree < 3) return;
         if (degree > 87) return;

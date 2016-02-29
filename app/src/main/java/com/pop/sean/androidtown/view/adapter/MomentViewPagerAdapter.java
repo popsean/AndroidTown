@@ -1,15 +1,10 @@
 package com.pop.sean.androidtown.view.adapter;
 
-import android.content.Context;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.pop.sean.androidtown.view.MomentDetailView;
-import com.pop.sean.androidtown.view.fragment.MomentDetailFragment;
 
 import java.util.ArrayList;
 import java.util.List;
