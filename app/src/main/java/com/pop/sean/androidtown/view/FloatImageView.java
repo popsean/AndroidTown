@@ -7,8 +7,11 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
+
+import com.pop.sean.androidtown.ATownEnv;
 
 public class FloatImageView extends ImageView implements SensorEventListener {
 
@@ -19,6 +22,7 @@ public class FloatImageView extends ImageView implements SensorEventListener {
     private static int height;
     Drawable d;
     private float oldDegree = 0;
+    private static int mCaculateMaxOffset = 0;
 
 
     public FloatImageView(Context context) {
@@ -48,6 +52,8 @@ public class FloatImageView extends ImageView implements SensorEventListener {
 
             height = MeasureSpec.getSize(heightMeasureSpec);
             width = (int) (int) Math.ceil((float) height * (float) d.getIntrinsicWidth() / (float) d.getIntrinsicHeight());
+            Log.d("BBB", "height: " + height + ", width: " + width + ", screenW: " + ATownEnv.getScreenWidth());
+            mCaculateMaxOffset = width - ATownEnv.getScreenWidth();
             setMeasuredDimension(width, height);
         } else {
             super.onMeasure(widthMeasureSpec, heightMeasureSpec);
@@ -73,11 +79,12 @@ public class FloatImageView extends ImageView implements SensorEventListener {
         float degree = event.values[0];
         if (degree < 3) return;
         if (degree > 87) return;
-        float fromX = oldDegree *10;
+        float fromX = oldDegree *10; // [-964, 0]
         float toX = -degree *10;
 //        Log.d("AAA", "currentDegree: " + degree + ", oldDegree: " + oldDegree + ", fromX: " + fromX + ", toX:" + toX);
-        TranslateAnimation ta = new TranslateAnimation(fromX, toX, 0, 0);
-        ta.setDuration(100);
+        TranslateAnimation ta = new TranslateAnimation(0, -mCaculateMaxOffset, 0, 0);
+//        TranslateAnimation ta = new TranslateAnimation(-482, 0, 0, 0);
+        ta.setDuration(500);
         ta.setFillAfter(true);
         startAnimation(ta);
         oldDegree = -degree;

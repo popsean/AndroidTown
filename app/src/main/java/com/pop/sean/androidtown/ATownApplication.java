@@ -8,7 +8,8 @@ import android.app.Application;
 public class ATownApplication extends Application {
 
     private static ATownApplication instace;
-    public static ATownApplication getInstance(){
+
+    public static ATownApplication getInstance() {
         return instace;
     }
 
@@ -17,5 +18,7 @@ public class ATownApplication extends Application {
         super.onCreate();
 //        Fresco.initialize(getApplicationContext());
         instace = this;
+
+        ATownEnv.getInstace().init(this);
     }
 }
