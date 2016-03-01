@@ -19,9 +19,10 @@ import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 import com.pop.sean.androidtown.R;
 import com.pop.sean.androidtown.sensor.GravitySensorFragment;
 import com.pop.sean.androidtown.statics.Constant;
-import com.pop.sean.androidtown.testcode.CompassFragment;
+import com.pop.sean.androidtown.testcode.BallFragment;
 import com.pop.sean.androidtown.testcode.GravitySensorFragment2;
-import com.pop.sean.androidtown.testcode.SensorTest3;
+import com.pop.sean.androidtown.testcode.RotationFragment;
+import com.pop.sean.androidtown.testcode.SensorsFragment;
 import com.pop.sean.androidtown.testcode.TestFragment;
 import com.pop.sean.androidtown.testcode.WideDrawerLayout;
 import com.pop.sean.androidtown.view.DrawerMenuView;
@@ -84,31 +85,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected void onCreateDrawer(Bundle savedInstanceState) {
-//        PrimaryDrawerItem item1 = new PrimaryDrawerItem().withName("item1");
-//        SecondaryDrawerItem item2 = new SecondaryDrawerItem().withName("item2");
-//
-//        //create profile
-//        profile = new ProfileDrawerItem().withName("Sean Zhao").withIcon(getResources().getDrawable(R.mipmap.ic_launcher));
-//
-//        //create header
-//        buildHeader(false, savedInstanceState);
-//
-//        //create drawer
-//        drawer = new DrawerBuilder()
-//                .withActivity(this)
-//                .withAccountHeader(headerResult)
-//                .withToolbar(toolbar)
-//                .withFullscreen(true)
-//                .withDrawerWidthPx(ScreenUtils.getScreenRealWidth(this))
-//                .addDrawerItems(
-//                        new PrimaryDrawerItem().withName("EDITORS' CHOICE"),
-//                        new PrimaryDrawerItem().withName("FOLLOW"),
-//                        new PrimaryDrawerItem().withName("FAVORITE"),
-//                        new PrimaryDrawerItem().withName("FEED"),
-//                        new PrimaryDrawerItem().withName("CITY"),
-//                        new PrimaryDrawerItem().withName("MESSAGE"),
-//                        new PrimaryDrawerItem().withName("SETTING")
-//                ).build();
 
     }
 
@@ -166,14 +142,14 @@ public abstract class BaseActivity extends AppCompatActivity {
                                 break;
                             case R.id.iv_message:
                                 Log.d("TOWN", "MESSAGE");
-                                Fragment f3 = CompassFragment.newInstance();
+                                Fragment f3 = BallFragment.newInstance();
                                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, f3).commit();
-                                setToolBarTitle("MESSAGE");
+                                setToolBarTitle("BALL");
                                 break;
                             case R.id.btnAvater:
-                                Fragment f4 = SensorTest3.newInstance();
+                                Fragment f4 = SensorsFragment.newInstance();
                                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, f4).commit();
-                                setToolBarTitle("btnAvater");
+                                setToolBarTitle("senors");
                                 break;
                             case R.id.btnSetting:
                                 Fragment f5 = GravitySensorFragment2.newInstance();
@@ -186,9 +162,9 @@ public abstract class BaseActivity extends AppCompatActivity {
                                 setToolBarTitle("btnFavorite");
                                 break;
                             case R.id.btnFeed:
-                                Fragment f7 = MomentsListFragment.newInstance(Constant.FEED_PAGE);
+                                Fragment f7 = RotationFragment.newInstance();
                                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, f7).commit();
-                                setToolBarTitle(Constant.FEED_PAGE);
+                                setToolBarTitle("Rotation");
                                 break;
                             case R.id.btnCity:
                                 Fragment f8 = GravitySensorFragment.newInstance();
