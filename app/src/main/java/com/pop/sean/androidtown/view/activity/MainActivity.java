@@ -2,21 +2,11 @@ package com.pop.sean.androidtown.view.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.Menu;
-import android.view.View;
 
-import com.mikepenz.materialdrawer.Drawer;
-import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.pop.sean.androidtown.R;
-import com.pop.sean.androidtown.testcode.CompassFragment;
-import com.pop.sean.androidtown.sensor.GravitySensorFragment;
-import com.pop.sean.androidtown.testcode.GravitySensorFragment2;
-import com.pop.sean.androidtown.testcode.SensorTest3;
-import com.pop.sean.androidtown.testcode.TestFragment;
 import com.pop.sean.androidtown.statics.Constant;
 import com.pop.sean.androidtown.view.fragment.EditorsChoiceFragment;
-import com.pop.sean.androidtown.view.fragment.MomentsListFragment;
 
 public class MainActivity extends BaseActivity {
 
@@ -41,66 +31,15 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initViews() {
-        if (getDrawer() != null) {
-            getDrawer().setOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
-                @Override
-                public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                    if (drawerItem != null) {
-
-                        switch (position) {
-                            case 1:
-                                Fragment f1 = EditorsChoiceFragment.newInstance(Constant.RECOMMEND_PAGE);
-                                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, f1).commit();
-                                setToolBarTitle(Constant.RECOMMEND_PAGE);
-                                Log.d("TOWN", "1");
-                                break;
-                            case 2:
-                                Fragment f2 = MomentsListFragment.newInstance(Constant.RELATIONSHIP_PAGE);
-                                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, f2).commit();
-                                setToolBarTitle(Constant.RELATIONSHIP_PAGE);
-                                Log.d("TOWN", "2");
-                                break;
-                            case 3:
-                                Log.d("TOWN", "3");
-                                Fragment f3 = CompassFragment.newInstance();
-                                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, f3).commit();
-                                setToolBarTitle("Compass");
-                                break;
-                            case 4:
-                                Fragment f4 = SensorTest3.newInstance();
-                                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, f4).commit();
-                                setToolBarTitle("O sensor");
-                                break;
-                            case 5:
-                                Fragment f5 = GravitySensorFragment2.newInstance();
-                                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, f5).commit();
-                                setToolBarTitle("Gsensor 2");
-                                break;
-                            case 6:
-                                Fragment f6 = TestFragment.newInstance();
-                                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, f6).commit();
-                                setToolBarTitle("test");
-                                break;
-//                            case 7:
-//                                Fragment f7 = MomentsListFragment.newInstance(Constant.SETTING_PAGE);
-//                                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, f7).commit();
-//                                setToolBarTitle(Constant.SETTING_PAGE);
-//                                break;
-                            case 7:
-                                Fragment f8 = GravitySensorFragment.newInstance();
-                                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, f8).commit();
-                                setToolBarTitle("G sensor");
-                                break;
-                        }
-                        if (getDrawer().isDrawerOpen()) {
-                            getDrawer().closeDrawer();
-                        }
-
-                    }
-                    return false;
-                }
-            });
-        }
+//        if (getDrawer() != null) {
+//            getDrawer().setOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+//                @Override
+//                public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+//
+//                    return false;
+//                }
+//            });
+//        }
     }
 
 
