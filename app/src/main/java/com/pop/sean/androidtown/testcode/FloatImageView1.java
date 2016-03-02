@@ -1,4 +1,4 @@
-package com.pop.sean.androidtown.view;
+package com.pop.sean.androidtown.testcode;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -13,32 +13,40 @@ import android.widget.ImageView;
 
 import com.pop.sean.androidtown.ATownEnv;
 
-public class FloatImageView extends ImageView implements SensorEventListener {
+public class FloatImageView1 extends ImageView implements SensorEventListener {
 
     private SensorManager sensorManager;
-    private Sensor orientSensor;
+    private Sensor sensor;
 
 
     private static int width;
     private static int height;
     Drawable d;
-    private double oldDegree = 0;
+    private float oldDegree = 0;
     private static int mCaculateMaxOffset = 0;
     private static float mCaculateXDetal = 0;
 
-    public FloatImageView(Context context) {
+
+    public FloatImageView1(Context context) {
         super(context);
         init();
     }
 
-    public FloatImageView(Context context, AttributeSet attrs) {
+    public FloatImageView1(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
     private void init() {
         sensorManager = (SensorManager) getContext().getSystemService(Context.SENSOR_SERVICE);
-        orientSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION);
+        sensor = sensorManager
+                .getDefaultSensor(Sensor.TYPE_ORIENTATION);
+//        Log.d("AAA", " AAAAA  currentDegree: " + degree + ", oldDegree: " + oldDegree + ", fromX: " + fromX + ", toX:" + toX);
+//        TranslateAnimation ta = new TranslateAnimation(-400, 0, 0, -0);
+//        TranslateAnimation ta = new TranslateAnimation(oldDegree, -degree, 0, 0);
+//        ta.setDuration(2000);
+//        ta.setFillAfter(true);
+//        startAnimation(ta);
     }
 
     @Override
@@ -53,7 +61,7 @@ public class FloatImageView extends ImageView implements SensorEventListener {
             width = (int) (int) Math.ceil((float) height * (float) d.getIntrinsicWidth() / (float) d.getIntrinsicHeight());
 //            Log.d("BBB", "height: " + height + ", width: " + width + ", screenW: " + ATownEnv.getScreenWidth());
             mCaculateMaxOffset = width - ATownEnv.getScreenWidth();
-            mCaculateXDetal = mCaculateMaxOffset / 80;
+            mCaculateXDetal = mCaculateMaxOffset / 180;
             setMeasuredDimension(width, height);
         } else {
             super.onMeasure(widthMeasureSpec, heightMeasureSpec);
@@ -61,7 +69,8 @@ public class FloatImageView extends ImageView implements SensorEventListener {
     }
 
     public void registerSensor() {
-        sensorManager.registerListener(this, orientSensor, SensorManager.SENSOR_DELAY_GAME);
+        sensorManager.registerListener(this, sensor,
+                SensorManager.SENSOR_DELAY_GAME);
     }
 
     public void unRegisterSensor() {
@@ -71,32 +80,34 @@ public class FloatImageView extends ImageView implements SensorEventListener {
     @Override
     public void onSensorChanged(SensorEvent event) {
         // TODO Auto-generated method stub
+
         if (event.sensor == null || event.sensor.getType() != Sensor.TYPE_ORIENTATION) {
             return;
         }
+//        getDrawable().setAlpha(255);
+        float degree = event.values[0];
+        Log.d("AAA", "  ==== > currentDegree: " + degree + ", oldDegree: " + oldDegree);
+        if (degree > 180){degree = 180;}
+//        if (degree < 3) return;
+//        if (degree > 87) return;
+        float fromX = oldDegree * mCaculateXDetal; // [-964, 0]
+        float toX = -degree * mCaculateXDetal;
+//        Log.d("AAA", "x:" + event.values[0] + ", y: " + event.values[1] + ", z: " + event.values[2]);
+//        TranslateAnimation ta = new TranslateAnimation(0, -mCaculateMaxOffset, 0,
+//        TranslateAnimation ta = new TranslateAnimation(--mCaculateMaxOffset /2, ATownEnv.getScreenWidth() / 2, 0, 0);
+        if (fromX > 0) fromX = 0;
+        if (toX > 0) toX = 0;
+        if (fromX < -mCaculateMaxOffset) fromX = -mCaculateMaxOffset;
+        if (toX < -mCaculateMaxOffset) toX = -mCaculateMaxOffset;
 
-        double degree = event.values[2];
-        //只选取一共80°的夹角范围
-        if (degree > 40) degree = 40;
-        if (degree < -40) degree = -40;
-        degree = -degree;
-        degree -= 40;
 
-        //去抖
-        if (Math.abs(degree - oldDegree) < 1.5) return;
-
-        float fromX = (float) (oldDegree * mCaculateXDetal);
-        float toX = (float) (degree * mCaculateXDetal);
-        Log.d("BBB", ", olddegree: " + oldDegree + ", degree: " + degree + ", mCaculateXDetal: " + mCaculateXDetal
-                + ", fromX: " + fromX + ", toX: " + toX);
-
+        Log.d("AAA", " CCCC mCaculateXDetal: " + mCaculateXDetal + ", currentDegree: " + degree + ", oldDegree: " + oldDegree + ", fromX: " + fromX + ", toX:" + toX + "<====");
         TranslateAnimation ta = new TranslateAnimation(fromX, toX, 0, 0);
-        //GAME模式传感器频率是50Hz,这里每20ms刷新一次动画
-        ta.setDuration(20);
-//        ta.setInterpolator(new DecelerateInterpolator());
+//        TranslateAnimation ta = new TranslateAnimation(oldDegree, -degree, 0, 0);
+        ta.setDuration(18);
         ta.setFillAfter(true);
         startAnimation(ta);
-        oldDegree = degree;
+        oldDegree = -degree;
 
     }
 
@@ -104,5 +115,6 @@ public class FloatImageView extends ImageView implements SensorEventListener {
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
     }
+
 
 }

@@ -32,10 +32,8 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
         <activity android:name=".testcode.BallActivity"
-            android:screenOrientation="landscape"
-
-
-            />
+            android:screenOrientation="landscape" />
+        <activity android:name=".testcode.SensorActivity"/>
     </application>
 
 </manifest>
